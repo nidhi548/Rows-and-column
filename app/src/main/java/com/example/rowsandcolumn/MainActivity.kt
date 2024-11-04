@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,6 +30,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.rowsandcolumn.State.Companion.ColorBox
 import com.example.rowsandcolumn.ui.theme.RowsAndColumnTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,44 +44,62 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 //                    Greeting("Android")
-                    Column(
-                        modifier = Modifier
-                            .background(Color.Green)
-                            .fillMaxSize()
-                            .width(600.dp)
-//                            .requiredWidth(600.dp)
-                            .border(5.dp, Color.Magenta)
-                            .padding(16.dp)
-                            .border(5.dp, Color.Blue)
-                            .padding(16.dp)
-                            .border(5.dp, Color.Red)
-//                        horizontalAlignment = Alignment.CenterHorizontally,
-//                        verticalArrangement = Arrangement.SpaceAround
-                    ) {
-                        Text(
-                            text = "Hi",
-//                            modifier = Modifier.offset(50.dp, 20.dp)
-                        )
-                        Spacer(modifier = Modifier.height(50.dp))
-                        Text(text = "World")
-                        Text(text = "Bye")
-                    }
-                    Row(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.Bottom
-                    ) {
-                        Text(text = "Hi")
-                        Text(text = "World")
-                    }
-                    Box (modifier = Modifier.fillMaxWidth(0.5f)){
-                        ImageCard.ImageCardMethod(
-                            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                            contentDescription = "Playing",
-                            title = "Playing in the snow"
-                        )
-                    }
+//                    Column(
+//                        modifier = Modifier
+//                            .background(Color.Green)
+//                            .fillMaxSize()
+//                            .width(600.dp)
+////                            .requiredWidth(600.dp)
+//                            .border(5.dp, Color.Magenta)
+//                            .padding(16.dp)
+//                            .border(5.dp, Color.Blue)
+//                            .padding(16.dp)
+//                            .border(5.dp, Color.Red)
+////                        horizontalAlignment = Alignment.CenterHorizontally,
+////                        verticalArrangement = Arrangement.SpaceAround
+//                    ) {
+//                        Text(
+//                            text = "Hi",
+////                            modifier = Modifier.offset(50.dp, 20.dp)
+//                        )
+//                        Spacer(modifier = Modifier.height(50.dp))
+//                        Text(text = "World")
+//                        Text(text = "Bye")
+//                    }
+//                    Row(
+//                        modifier = Modifier.fillMaxSize(),
+//                        horizontalArrangement = Arrangement.Center,
+//                        verticalAlignment = Alignment.Bottom
+//                    ) {
+//                        Text(text = "Hi")
+//                        Text(text = "World")
+//                    }
+//                    Box (modifier = Modifier.fillMaxWidth(0.5f)){
+//                        ImageCard.ImageCardMethod(
+//                            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+//                            contentDescription = "Playing",
+//                            title = "Playing in the snow"
+//                        )
+//                    }
+                    Column(Modifier.fillMaxSize()) {
+                        val color = remember {
+                            mutableStateOf(Color.Yellow)
+                        }
+                        ColorBox(
+                            Modifier
+                                .fillMaxSize()
+                                .weight(1f)) {
+                            color.value = it
+                        }
+                        Box(
+                            modifier = Modifier
+                                .background(color.value)
+                                .weight(1f)
+                                .fillMaxSize()
+                        ) {
 
+                        }
+                    }
                 }
             }
         }
