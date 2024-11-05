@@ -13,6 +13,9 @@
         android:theme="@style/Theme.RowsAndColumn"
         tools:targetApi="31">
         <activity
+            android:name=".ConstraintLayoutTutorial"
+            android:exported="false" />
+        <activity
             android:name=".ListsInCompose"
             android:exported="false" />
         <activity

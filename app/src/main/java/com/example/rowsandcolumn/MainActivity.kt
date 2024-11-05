@@ -119,6 +119,11 @@ class MainActivity : ComponentActivity() {
                         context.startActivity(intent)}) {
                             Text(text = "Go to List In Compose tutorial")
                         }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = { val intent = Intent(context, ConstraintLayoutTutorial::class.java)
+                            context.startActivity(intent)}) {
+                            Text(text = "Go to Constraint Layout Tutorial")
+                        }
                     }
                 }
             }
