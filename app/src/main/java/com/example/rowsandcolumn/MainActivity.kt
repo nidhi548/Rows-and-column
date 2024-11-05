@@ -114,6 +114,11 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Go to Snack Bar Tutorial")
                         }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Button(onClick = { val intent = Intent(context, ListsInCompose::class.java)
+                        context.startActivity(intent)}) {
+                            Text(text = "Go to List In Compose tutorial")
+                        }
                     }
                 }
             }
